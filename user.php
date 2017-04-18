@@ -1,7 +1,7 @@
 <?php
 class user  {
 
-	// Taulukko, missä on virhekoodeja vastaavat virhetekstit
+	// Table with error messages
 	private static $errorlist = array (
 			- 1 => "Incorrect information",
 			0 => "",
@@ -10,7 +10,7 @@ class user  {
 			13 => "Name is too long",
       21 => "Birth year is required",
 			22 => "Birth year must be yyyy ( 4 numbers)",
-			23 => "Birth year is cannot be under 1900",
+			23 => "Birth year is under minimum (1900)",
 			24 => "Birth year cannot be in the future",
 			31 => "Email is required",
 			32 => "Email is too long",
@@ -70,7 +70,7 @@ class user  {
 	}
 
 	public function checkBirthyear($required = true, $min = 1900) {
-
+		// If cannot be empty but is empty
 		if ($required == true && strlen ( $this->birthyear ) == 0) {
 			return 21;
 		}
@@ -80,11 +80,12 @@ class user  {
 			return 22;
 		}
 
+		// If birthyear is under minimum
 		if ($this->birthyear < $min) {
 			return 23;
 		}
 
-		// if birthyear is on the future
+		// If birthyear is on the future
 		$max = date ( "Y", time () );
 		if ($this->birthyear > $max) {
 			return 24;
@@ -103,7 +104,7 @@ class user  {
 	}
 
 	public function checkEmail($required = true, $max = 40) {
-
+		// If cannot be empty but is empty
 		if ($required == true && strlen ( $this->email ) == 0) {
 			return 31;
 		}
@@ -131,7 +132,7 @@ class user  {
 		}
 
 		public function checkDesc($required = false, $max = 200) {
-			// Jos saa olla tyhjä ja on tyhjä
+			// If is allowed to be empty and is empty
 			if ($required == false && strlen ( $this->desc) == 0) {
 				return 0;
 			}
