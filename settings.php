@@ -1,3 +1,10 @@
+<?php
+if (isset ( $_POST ["edit"] )) {
+	$post= $_POST ["urname"];
+	setcookie ( "namecookie", $post, time () + 60 * 60 * 24 * 7 );
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +43,11 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="mt-3">
-          <?php
-      			if (isset ( $_COOKIE ["namecookie"] )) {
-      				print ("<h1>Welcome, " . $_COOKIE["namecookie"] . "!</h1>");
-      			} else {
-      				print ("<h1>Welcome!</h1>");
-      			}
-      		?>
+          <form action="index.php" method="post">
+  					<label>Your name: </label>
+            <input type="text" name="urname" value="<?php print($_COOKIE["namecookie"]) ?>">
+            <input type="submit" name="edit" value="Edit name">
+				  </form>
         </div>
       </div>
 

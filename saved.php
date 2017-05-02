@@ -36,13 +36,8 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="mt-3">
-          <?php
-      			if (isset ( $_COOKIE ["namecookie"] )) {
-      				print ("<h1>Welcome, " . $_COOKIE["namecookie"] . "!</h1>");
-      			} else {
-      				print ("<h1>Welcome!</h1>");
-      			}
-      		?>
+          <h1>User information saved succesfully!</h1>
+          <a href="index.php"><input type="button" value="Back to main page"></a>
         </div>
       </div>
 
