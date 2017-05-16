@@ -72,6 +72,7 @@ elseif (isset ( $_POST ["cancel"] )) {
             <li><a href="index.php">WELCOME</a></li>
             <li><a href="addUser.php">ADD A NEW USER</a></li>
             <li><a href="showUsers.php">SHOW USERS</a></li>
+            <li><a href="listUsers.php">LIST USERS</a></li>
             <li><a href="settings.php">SETTINGS</a></li>
           </ul>
         </div>
@@ -86,9 +87,10 @@ elseif (isset ( $_POST ["cancel"] )) {
                 <legend>
                   Add a new user:
                 </legend>
+                <input type="hidden" name="id"value="<?php print($user->getId()); ?>">
               <p>
                 <label>Name:</label>
-                <input type="text" name="name" size="40" value="
+                <input type="text" name="name" size="50" value="
                 <?php print (htmlentities($user->getName(), ENT_QUOTES, "UTF-8"));?>">
                 <?php print ("<span class='pun'>" . $user->getError ( $nameError ) . "</span>") ; ?>
               </p>
@@ -100,7 +102,7 @@ elseif (isset ( $_POST ["cancel"] )) {
               </p>
               <p>
                 <label>E-mail:</label>
-                <input type="text" name="email" size="40" value="
+                <input type="text" name="email" size="50" value="
                   <?php print (htmlentities($user->getEmail(), ENT_QUOTES, "UTF-8"));?>">
                   <?php print ("<span class='pun'>" . $user->getError ( $emailError ) . "</span>") ;?>
               </p>

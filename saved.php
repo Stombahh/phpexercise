@@ -27,6 +27,7 @@
             <li><a href="index.php">WELCOME</a></li>
             <li><a href="addUser.php">ADD A NEW USER</a></li>
             <li><a href="showUsers.php">SHOW USERS</a></li>
+            <li><a href="listUsers.php">LIST USERS</a></li>
             <li><a href="settings.php">SETTINGS</a></li>
           </ul>
         </div>

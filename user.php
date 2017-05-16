@@ -8,7 +8,7 @@ class user  {
 			11 => "Name is required",
 			12 => "Name is too short",
 			13 => "Name is too long",
-      21 => "Birth year is required",
+      		21 => "Birth year is required",
 			22 => "Birth year must be yyyy ( 4 numbers)",
 			23 => "Birth year is under minimum (1900)",
 			24 => "Birth year cannot be in the future",
@@ -24,13 +24,15 @@ class user  {
 	private $birthyear;
 	private $email;
 	private $desc;
+	private $id;
 
 	// Constructor
-	function __construct($name = "", $birthyear = "", $email = "", $desc = "") {
+	function __construct($name = "", $birthyear = "", $email = "", $desc = "", $id = 0) {
 		$this->name = trim ( $name );
 		$this->birthyear = trim ( $birthyear );
 		$this->email = trim ( $email );
 		$this->desc = trim ( $desc );
+		$this->id = $id;
 	}
 
 	// Methods
@@ -41,7 +43,7 @@ class user  {
 		return $this->name;
 	}
 
-	public function checkName($required = true, $min = 1, $max = 40) {
+	public function checkName($required = true, $min = 1, $max = 50) {
 
 		// If cannot be empty but is empty
 		if ($required == true && strlen ( $this->name ) == 0) {
@@ -103,7 +105,7 @@ class user  {
 		return $this->email;
 	}
 
-	public function checkEmail($required = true, $max = 40) {
+	public function checkEmail($required = true, $max = 50) {
 		// If cannot be empty but is empty
 		if ($required == true && strlen ( $this->email ) == 0) {
 			return 31;
@@ -131,7 +133,7 @@ class user  {
 			return $this->desc;
 		}
 
-		public function checkDesc($required = false, $max = 200) {
+		public function checkDesc($required = false, $max = 500) {
 			// If is allowed to be empty and is empty
 			if ($required == false && strlen ( $this->desc) == 0) {
 				return 0;
@@ -148,6 +150,14 @@ class user  {
 			}
 		// If OK
 		return 0;
+	}
+
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getId() {
+		return $this->id;
 	}
 
 	// Method shows matching error message
